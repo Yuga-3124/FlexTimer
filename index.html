@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexTimer Official Download</title>
+    <style>
+        /* アプリに合わせた高級感のあるダークモード */
+        body {
+            background-color: #141414;
+            color: #ffffff;
+            font-family: 'Impact', 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #ff5a00; /* ネオンオレンジ */
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-family: 'Segoe UI', sans-serif;
+            color: #aaaaaa;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* 爆速ダウンロードボタン */
+        .dl-btn {
+            background-color: #ff5a00;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 90, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .dl-btn:hover {
+            background-color: #e04f00;
+            transform: scale(1.05);
+        }
+
+        /* サンクスページ（最初は隠しておく） */
+        .thanks-screen {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        <h2> {
+            font-size: 3rem;
+            color: #00ff66; /* 成功のグリーン */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-screen">
+        <h1>FlexTimer</h1>
+        <p>The sleekest, fastest desktop countdown timer ever built.</p>
+        
+        <button class="dl-btn" onclick="startDownload()">DOWNLOAD NOW</button>
+    </div>
+
+    <div class="container thanks-screen" id="thanks-screen">
+        <h2>DOWNLOAD STARTED! 🚀</h2>
+        <h1 style="color: #ffffff; font-size: 2.5rem;">ダウンロードしてくれてありがとう！</h1>
+        <p style="color: #ff5a00; font-size: 1.5rem;">爆速タイマーライフへようこそ。作業効率をぶち上げようぜ！</p>
+    </div>
+
+    <script>
+        function startDownload() {
+            const link = document.createElement('a');
+            
+            // 💡 GitHub Pagesでブラウザの暴走を止め、確実にZipを即時DLさせる設定
+            link.setAttribute('href', 'FlexTimer.zip');
+            link.setAttribute('download', 'FlexTimer.zip');
+            
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // 画面をシュッと切り替えて「ありがとう」を表示
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('thanks-screen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
