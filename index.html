@@ -72,7 +72,7 @@
             animation: fadeIn 0.5s ease forwards;
         }
 
-        <h2> {
+        h2 {
             font-size: 3rem;
             color: #00ff66; /* 成功のグリーン */
         }
@@ -102,8 +102,11 @@
         function startDownload() {
             const link = document.createElement('a');
             
-            // 💡 GitHub Pagesでブラウザの暴走を止め、確実にZipを即時DLさせる設定
-            link.setAttribute('href', 'FlexTimer.zip');
+            // 💡 修正ポイント：Dropboxの直リンクを設定（警告なしで爆速即時DL）
+            // ※【注意】URLの末尾が必ず「dl=1」になっていることを確認してください
+            const dropboxUrl = 'ここにDropboxのURLを貼り付ける（末尾は必ず dl=1 にする）';
+            
+            link.setAttribute('href', dropboxUrl);
             link.setAttribute('download', 'FlexTimer.zip');
             
             link.style.display = 'none';
